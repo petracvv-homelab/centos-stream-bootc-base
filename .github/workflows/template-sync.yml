@@ -20,6 +20,7 @@ jobs:
           is_allow_hooks: true
           is_dry_run: false
           source_gh_token: ${{ secrets.SYNC_PAT }}
+          target_gh_token: ${{ secrets.SYNC_PAT }}
           pr_title: Update from homelab-template
           hooks: >
             precommit:
