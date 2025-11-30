@@ -6,9 +6,6 @@ on:
 jobs:
   sync-upstream:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
 
     steps:
       - uses: actions/checkout@v6
@@ -21,9 +18,9 @@ jobs:
           source_repo_path: petracvv-homelab/homelab-template
           is_allow_hooks: true
           is_dry_run: false
+          pr_title: Update from homelab-template
           source_gh_token: ${{ secrets.SYNC_PAT }}
           target_gh_token: ${{ secrets.SYNC_PAT }}
-          pr_title: Update from homelab-template
           is_pr_cleanup: true
           hooks: >
             precommit:

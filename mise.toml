@@ -34,3 +34,6 @@ run = '''
 gh pr merge --auto -d $(gh pr list --author $GITHUB_BOT_USER --label template_sync --limit 1 --state open --json number --jq '.[].number')
 '''
 
+[tasks."template:sync"]
+description = "Sync changes from upstream template"
+depends = ['template:trigger', 'template:view', 'template:merge']
