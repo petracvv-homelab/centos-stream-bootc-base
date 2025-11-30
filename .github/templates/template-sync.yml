@@ -1,0 +1,29 @@
+---
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sync-upstream:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Sync files from template
+        uses: AndreasAugustin/actions-template-sync@v2
+        with:
+          source_repo_path: petracvv-homelab/homelab-template
+          is_allow_hooks: true
+          is_dry_run: false
+          pr_title: Update from homelab-template
+          hooks: >
+            precommit:
+              commands:
+                - find .github/workflows -name 'shared*' -exec rm -v {} \;
+                - find .github/templates -name '*.yml' -exec mv -v {} .github/workflows/ \;
+
+
