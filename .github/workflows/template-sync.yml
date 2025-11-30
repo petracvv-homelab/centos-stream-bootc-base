@@ -24,6 +24,7 @@ jobs:
           source_gh_token: ${{ secrets.SYNC_PAT }}
           target_gh_token: ${{ secrets.SYNC_PAT }}
           pr_title: Update from homelab-template
+          is_pr_cleanup: true
           hooks: >
             precommit:
               commands:
