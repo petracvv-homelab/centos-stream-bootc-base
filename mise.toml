@@ -36,4 +36,4 @@ gh pr merge --auto -d $(gh pr list --author $GITHUB_BOT_USER --label template_sy
 
 [tasks."template:sync"]
 description = "Sync changes from upstream template"
-depends = ['template:trigger', 'template:view', 'template:merge']
+run = ['mise run template:trigger', 'mise run template:view', 'mise run template:merge', 'git pull']
